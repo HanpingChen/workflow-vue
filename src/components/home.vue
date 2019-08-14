@@ -20,6 +20,7 @@
         <li><a href="#/apply">客户管理</a></li>
         <li><a href="#/activate_task">待办任务</a></li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
       <router-link :to="{path:'/login'}" class="navbar-text" >{{login_msg}}</router-link>
 
