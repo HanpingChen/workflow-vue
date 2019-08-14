@@ -11,13 +11,10 @@
         <input type="password" id="inputPassword" v-model="password" class="form-control" placeholder="密码" required>
         <div class="checkbox">
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="login()">登录</button>
+        <button class="btn btn-lg btn-primary btn-block" @click.prevent="login()">登录</button>
       </form>
         </div>
-        <p>{{id}}</p>
-        <p>{{password}}</p>
-        <p>{{msg}}</p>
-        <p>zmhs</p>
+        
     </div>
 </template>
 <script>
