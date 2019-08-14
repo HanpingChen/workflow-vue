@@ -81,11 +81,6 @@
         <label class="control-label col-sm-4"></label>
         <label class="control-label col-sm-6"></label>
         <label class="control-label col-sm-2">招商银行合肥分行</label>
-
-        <p>{{results}}</p>
-        <p>{{apply_data.starter}}</p>
-        <p>{{apply_data.discountType}}</p>
-        <p>{{apply_data.xmtype}}</p>
         <h5 class="page-header"></h5>
 
     </div>
