@@ -67,12 +67,12 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">备注</label>
                 <div class="col-sm-10">
-                <textarea class="form-control" rows="3" placeholder=""></textarea>
+                <textarea class="form-control" v-model="msg" rows="3" placeholder=""></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-4"></div>
-                <button class="btn btn-primary col-sm-4" v-on:click="applyAmt()">申请</button>
+                <button class="btn btn-primary col-sm-4" @click.prevent="applyAmt()">申请</button>
             </div>
         </form> 
         <ul class="nav nav-list"><li class="divider"></li></ul>
@@ -102,7 +102,7 @@ export default {
           amt: 0,
           userId:'10',
           starter: 'A',
-          branch: '0551',
+          branch: '0553',
           discountType:'',
           cor:'',
           username: '',
@@ -124,9 +124,11 @@ export default {
     
     applyAmt: function () {
         this.results = '正在请求'
-      axios.post('/api/customer/start_process_by_key',this.apply_data).then(response => (
+      axios.post('/api/customer/start_process_by_key',this.apply_data).then(response => {
         this.results = response.data
-      ))
+        alert('提交成功')
+        this.$router.push({name:'home'})
+    })
      
     }
   }

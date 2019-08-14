@@ -21,10 +21,10 @@
         </div>
      <div class="col-md-4"></div>
         <div class="col-md-2">
-                <button class="btn btn-primary btn-block" v-on:click="pass()">通过</button>
+                <button class="btn btn-primary btn-block" @click.prevent="pass()">通过</button>
             </div>
             <div class="col-md-2">
-                 <button class="btn btn-primary btn-block" v-on:click="reject()">驳回</button>
+                 <button class="btn btn-primary btn-block" @click.prevent="reject()">驳回</button>
             </div>
         <div class="col-md-4"></div>
     </form>
