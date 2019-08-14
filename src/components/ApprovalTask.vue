@@ -7,7 +7,7 @@
     <form class="form-horizontal">
         <table class="table  table-hover table-striped table-bordered">
         <tbody>
-            <tr v-for='(v,k,i) of this.apply.data[0]' :key="k">
+            <tr v-for='(v,k) of this.apply.data[0]' :key="k">
                 <td>{{colunmn_dict[k]}}</td>
                 <td>{{v}}</td>
             </tr>
