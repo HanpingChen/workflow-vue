@@ -6,12 +6,14 @@ import ApplyResult from '@/components/ApplyResult'
 import ActivateTask from '@/components/ActivateTask'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import ApprovalTask from'@/components/ApprovalTask'
+import test from '@/components/test'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       children:[
@@ -36,11 +38,21 @@ export default new Router({
           path: '/activate_task',
           name: 'activateTask',
           component: ActivateTask
+        },
+        {
+          path: '/approval_task',
+          name: 'approvalTask',
+          component: ApprovalTask
+        },
+        {
+          path: '/test',
+          name:'test',
+          component: test
         }
       ]
     },
     {
-      path: '/login',
+      path: '/',
       name:'login',
       component: Login
     }

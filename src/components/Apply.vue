@@ -6,13 +6,13 @@
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">* 客户id</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control"  placeholder="客户id">
+                    <input v-model="apply_data.userId" class="form-control"  placeholder="客户id">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">客户姓名</label>
                 <div class="col-sm-10">
-                <input type="password" class="form-control"  placeholder="客户姓名">
+                <input  v-model="apply_data.username" class="form-control"  placeholder="客户姓名">
                 </div>
             </div>
             <div class="form-group">
@@ -24,41 +24,44 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">* 减免类型</label>
                 <div class="col-sm-10">
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select class="form-control" v-model="apply_data.discountType">
+                    <option>一次性减免</option>
+                    <option>分期减免</option>
                 </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">* 减免金额</label>
                 <div class="col-sm-10">
-                <input type="password" class="form-control"  placeholder="减免金额">
+                <input v-model="apply_data.amt"  class="form-control"  placeholder="减免金额">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">合作前景</label>
                 <div class="col-sm-10">
-                <textarea class="form-control" rows="3" placeholder="合作前景"></textarea>
+                <textarea v-model="apply_data.cor" class="form-control" rows="3" placeholder="合作前景"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">有无不良贷款</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">客户规模、效益、有无不良贷款</label>
                 <div class="col-sm-10">
-                <textarea class="form-control" rows="3" placeholder=""></textarea>
+                <textarea v-model="apply_data.situation" class="form-control" rows="3" placeholder=""></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">本年度减免记录</label>
                 <div class="col-sm-10">
-                <textarea class="form-control" rows="3" placeholder=""></textarea>
+                <textarea v-model="apply_data.record" class="form-control" rows="3" placeholder=""></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">* 办理机构代码</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">* 业务类型</label>
                 <div class="col-sm-10">
-                <textarea class="form-control" rows="3" placeholder="0552"></textarea>
+                    <select name="" class="form-control" v-model="apply_data.xmtype">
+                        <option>对公</option>
+                        <option>零售</option>
+                        <option>其它</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -81,6 +84,8 @@
 
         <p>{{results}}</p>
         <p>{{apply_data.starter}}</p>
+        <p>{{apply_data.discountType}}</p>
+        <p>{{apply_data.xmtype}}</p>
         <h5 class="page-header"></h5>
 
     </div>
@@ -94,13 +99,26 @@ export default {
         apply_data: {
           key:'test',
           xmtype: '1',
-          amt: 10,
+          amt: 0,
           userId:'10',
           starter: 'A',
-          branch: '0552'
+          branch: '0551',
+          discountType:'',
+          cor:'',
+          username: '',
+          processKey:'test',
+          record:'',
+          analyse:'',
+          situation: '',
+          msg:''
         },
-        results: '还没有结果'
+        results: '还没有结果',
+        employId:''
       }
+  },
+  created () {
+    this.employId = this.$route.params.id
+    this.apply_data.starter = this.employId
   },
   methods: {
     

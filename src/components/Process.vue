@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody >
-            <tr v-for='process in this.processJson.data'>
+            <tr v-for='process in this.processJson.data' :key="process">
               <td>{{process.id}}</td>
               <td>{{process.key}}</td>
               <td>{{process.name}}</td>
@@ -40,6 +40,9 @@ export default {
     return {
       processJson: '这是开始的时候'
     }
+  },
+  created () {
+    this.queryProcess()
   },
   methods: {
     queryProcess: function () {

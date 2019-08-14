@@ -10,15 +10,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#/">工作流</a>
+      <a class="navbar-brand" href="#/" @click="selected('0')">工作流</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="#/process">流程定义 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#/apply">客户管理</a></li>
-        <li><a href="#/activate_task">待办任务</a></li>
+        <li v-bind:class="{'active':this.active == '1'}"><a @click="selected('1')" href="#/process">流程定义 </a></li>
+        <li v-bind:class="{'active':this.active == '2'}"><a @click="selected('2')" href="#/apply" >客户管理</a></li>
+        <li v-bind:class="{'active':this.active == '3'}"><a @click="selected('3')" href="#/activate_task" >待办任务</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -36,7 +36,28 @@
 export default {
   data () {
     return {
-      login_msg: '登录'
+      login_msg: '登录',
+      id:'',
+      active:''
+    }
+  },
+  created () {
+    this.id = sessionStorage.getItem('id')
+    this.active = sessionStorage.getItem('selected')
+    if(this.active == null){
+      this.active = '0'
+    }
+    if(this.id == null){
+      this.$router.push({name: 'login'})
+    }
+    console.log(this.$route)
+    console.log(this.id)
+    this.login_msg = '欢迎' + this.id  
+  },
+  methods: {
+    selected: function(index){
+      this.active = index
+      sessionStorage.setItem('selected',index)
     }
   },
   name: 'App'
