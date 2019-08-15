@@ -21,7 +21,8 @@
               <th>流程代码</th>
               <th>任务处理人</th>
               <th>任务名称</th>
-              <th>任务所属组</th>
+              <th>任务所属分行</th>
+              <th>任务所属部门</th>
               <th>任务处理候选人</th>
               <th>更新时间</th>
               <th>操作</th>
@@ -34,7 +35,8 @@
               <td>{{task.processKey}}</td>
               <td>{{task.assignee}}</td>
               <td>{{task.taskName}}</td>
-              <td>{{task.groupId}}</td>
+              <td>{{task.currentBranch}}</td>
+              <td>{{task.currentSubbranch}}</td>
               <td>{{task.candidates}}</td>
               <td>{{task.timeStr}}</td>
     
@@ -70,7 +72,7 @@ export default {
           "taskId":this.currentTask.taskId,"assignee":this.employId
         })
         ).then(response => {
-          alert("拾取任务成功，即将进入任务处理页面")
+          // alert("拾取任务成功，即将进入任务处理页面")
       })
     },
     queryTask: function () {
@@ -81,7 +83,9 @@ export default {
       this.currentTask = '被点击了'
       this.currentTask = task
       // 请求后端接口，拾取当前任务
-      this.clainTask()
+      if( this.currentTask.assignee == null){
+        this.clainTask()
+      }
       // 把当前点击的任务json转化为字符串存储在session中
       sessionStorage.setItem('task', JSON.stringify(this.currentTask))
       console.log(this.currentTask)
