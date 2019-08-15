@@ -3,13 +3,16 @@
         <h2>待办任务</h2>
         <div class="row">
             <div class="col-md-6">
-                <div class="input-group">
+                <form >
+                    <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">员工id</span>
                     <input v-model="employId" type="text" class="form-control"  aria-describedby="basic-addon1">
                     <span class="input-group-btn">
-                        <button class="btn btn-default"  v-on:click="queryTask()">查询</button>
+                        <button class="btn btn-default"  @click.prevent="queryTask()">查询</button>
                     </span>
                 </div>
+                </form>
+                
             </div>
         </div>
         <h5 class="page-header"></h5>
@@ -19,11 +22,11 @@
               <th>任务id</th>
               <th>流程id</th>
               <th>流程代码</th>
-              <th>任务处理人</th>
+              <th>处理人</th>
               <th>任务名称</th>
-              <th>任务所属分行</th>
-              <th>任务所属部门</th>
-              <th>任务处理候选人</th>
+              <th>所属分行</th>
+              <th>所属部门</th>
+              <th>处理候选人</th>
               <th>更新时间</th>
               <th>操作</th>
             </tr>
