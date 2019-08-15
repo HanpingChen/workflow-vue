@@ -72,8 +72,8 @@ export default {
       this.approval()
     },
     reject: function () {
-      this.judgement = 'no'
-      this.approval
+      this.judgement = 'NO'
+      this.approval()
     },
     approval: function () {
       axios.post('/api/employ/start_task',qs.stringify(

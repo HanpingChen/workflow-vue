@@ -64,6 +64,15 @@ export default {
     this.queryTask()
   },
   methods: {
+    clainTask: function () {
+      axios.post('/api/employ/acquire_task',qs.stringify(
+        {
+          "taskId":this.currentTask.taskId,"assignee":this.employId
+        })
+        ).then(response => {
+          alert("拾取任务成功，即将进入任务处理页面")
+      })
+    },
     queryTask: function () {
       this.responseStr = '正在查询'
       axios.post('/api/employ/query_task_by_assignee',qs.stringify({"assignee":this.employId})).then(response => (this.responseStr = response.data))
@@ -71,6 +80,9 @@ export default {
     handleTask: function (task) {
       this.currentTask = '被点击了'
       this.currentTask = task
+      // 请求后端接口，拾取当前任务
+      this.clainTask()
+      // 把当前点击的任务json转化为字符串存储在session中
       sessionStorage.setItem('task', JSON.stringify(this.currentTask))
       console.log(this.currentTask)
       console.log(sessionStorage)

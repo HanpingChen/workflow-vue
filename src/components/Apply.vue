@@ -49,6 +49,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">效益评估与分析</label>
+                <div class="col-sm-10">
+                <textarea v-model="apply_data.analyse" class="form-control" rows="3" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">本年度减免记录</label>
                 <div class="col-sm-10">
                 <textarea v-model="apply_data.record" class="form-control" rows="3" placeholder=""></textarea>
@@ -57,7 +63,7 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">* 业务类型</label>
                 <div class="col-sm-10">
-                    <select name="" class="form-control" v-model="apply_data.xmtype">
+                    <select name="" class="form-control" v-on:change="selectType">
                         <option>对公</option>
                         <option>零售</option>
                         <option>其它</option>
@@ -67,7 +73,7 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">备注</label>
                 <div class="col-sm-10">
-                <textarea class="form-control" v-model="msg" rows="3" placeholder=""></textarea>
+                <textarea class="form-control" v-model="apply_data.msg" rows="3" placeholder=""></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -75,6 +81,7 @@
                 <button class="btn btn-primary col-sm-4" @click.prevent="applyAmt()">申请</button>
             </div>
         </form> 
+        <p>{{apply_data.xmtype}}</p>
         <ul class="nav nav-list"><li class="divider"></li></ul>
         <ul class="nav nav-list"><li class="divider"></li></ul>
         <h5 class="page-header"></h5>
@@ -92,16 +99,14 @@ export default {
   data () {
       return {
         apply_data: {
-          key:'test',
-          xmtype: '1',
+          xmtype: '0',
           amt: 0,
           userId:'10',
           starter: 'A',
-          branch: '0553',
           discountType:'',
           cor:'',
           username: '',
-          processKey:'test',
+          processKey:'bankcheck',
           record:'',
           analyse:'',
           situation: '',
@@ -116,7 +121,9 @@ export default {
     this.apply_data.starter = this.employId
   },
   methods: {
-    
+    selectType: function (e) {
+      this.apply_data.xmtype = e.target.options.selectedIndex + ""
+    },
     applyAmt: function () {
         this.results = '正在请求'
       axios.post('/api/customer/start_process_by_key',this.apply_data).then(response => {
