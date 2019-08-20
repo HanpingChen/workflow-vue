@@ -19,6 +19,7 @@
         <li v-bind:class="{'active':this.active == '1'}"><a @click="selected('1')" href="#/process">流程定义 </a></li>
         <li v-bind:class="{'active':this.active == '2'}"><a @click="selected('2')" href="#/apply" >客户管理</a></li>
         <li v-bind:class="{'active':this.active == '3'}"><a @click="selected('3')" href="#/activate_task" >待办任务</a></li>
+        <li v-bind:class="{'active':this.active == '4'}"><a @click="selected('4')" href="#/status_task" >流程状态</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

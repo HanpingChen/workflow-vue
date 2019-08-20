@@ -67,7 +67,7 @@ export default {
     this.employId = sessionStorage.getItem('id')
     // 查询当前员工的待办任务
     this.queryTask()
-  },
+  }, 
   methods: {
     clainTask: function () {
       axios.post('/api/employ/acquire_task',qs.stringify(

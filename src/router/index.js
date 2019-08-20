@@ -7,6 +7,7 @@ import ActivateTask from '@/components/ActivateTask'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import ApprovalTask from'@/components/ApprovalTask'
+import StatusTask from '@/components/StatusTask'
 import test from '@/components/test'
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
           path: '/approval_task',
           name: 'approvalTask',
           component: ApprovalTask
+        },
+        {
+          path:'/status_task',
+          name:'StatusTask',
+          component:StatusTask
         },
         {
           path: '/test',
