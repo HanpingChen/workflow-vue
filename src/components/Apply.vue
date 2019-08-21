@@ -103,7 +103,7 @@ export default {
           amt: 0,
           userId:'10',
           starter: 'A',
-          discountType:'',
+          discountType:'一次性减免',
           cor:'',
           username: '',
           processKey:'bankcheck',

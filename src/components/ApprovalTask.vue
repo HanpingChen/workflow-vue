@@ -58,7 +58,7 @@ export default {
     this.employId = sessionStorage.getItem('id')
     console.log(this.task)
     // 查找apply实体类
-    axios.post('/api/apply/query_apply',qs.stringify({"applyId":this.task.processInstanceId})).then(response =>(
+    axios.post('/api/apply/query_apply',qs.stringify({"processId":this.task.processInstanceId})).then(response =>(
         this.apply = response.data
     ))
     // 查找字段表
